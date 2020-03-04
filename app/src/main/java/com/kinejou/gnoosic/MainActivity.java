@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //the 3 artists
+                startActivity(new Intent(MainActivity.this, FormActivity.class));
             }
         });
 
@@ -24,8 +25,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //History of liked artistes
-
-                startActivity(new Intent(MainActivity.this, FormActivity.class));
             }
         });
     }

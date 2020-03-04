@@ -15,8 +15,7 @@
         android:textSize="25sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="#000"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/welcome"
@@ -26,8 +25,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginRight="20dp"
         android:text="@string/welcome"
-        app:layout_constraintTop_toBottomOf="@id/title_welcome"
-        android:textColor="#000"/>
+        app:layout_constraintTop_toBottomOf="@id/title_welcome"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/start"
@@ -40,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/welcome"
-        android:textColor="#000"/>
+        android:textColor="#777"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/history"
@@ -53,8 +51,7 @@
         android:layout_marginStart="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_goneMarginBottom="20dp"
-
-        android:textColor="#000"/>
+        android:textColor="#777"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
