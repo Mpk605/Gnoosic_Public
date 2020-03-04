@@ -2,6 +2,7 @@ package com.kinejou.gnoosic;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,6 +14,22 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class FormActivity extends AppCompatActivity {
 
+    private TextWatcher watcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            Log.d("afterTextChanged", "text changed to " + s);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,25 +37,20 @@ public class FormActivity extends AppCompatActivity {
         setContentView(R.layout.activity_form);
 
         final TextInputEditText fav1 = findViewById(R.id.fav_band_1);
-        fav1.addTextChangedListener(new TextWatcher() {
+        fav1.addTextChangedListener(watcher);
 
-            @Override
-            public void afterTextChanged(Editable s) {
-                Log.d("afterTextChanged", "text changed to " + s);
-            }
+        final TextInputEditText fav2 = findViewById(R.id.fav_band_2);
+        fav1.addTextChangedListener(watcher);
 
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-        });
+        final TextInputEditText fav3 = findViewById(R.id.fav_band_3);
+        fav1.addTextChangedListener(watcher);
+
 
         findViewById(R.id.continue_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(FormActivity.this, fav1.getText(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(FormActivity.this, fav1.getText() + " - " + fav2.getText() + " - " + fav3.getText(), Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(FormActivity.this, ResultActivity.class));
             }
         });
     }
