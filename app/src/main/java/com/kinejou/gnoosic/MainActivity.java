@@ -2,6 +2,7 @@ package com.kinejou.gnoosic;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -22,7 +23,9 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.history).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Historic of liked artistes
+                //History of liked artistes
+
+                startActivity(new Intent(MainActivity.this, FormActivity.class));
             }
         });
     }
