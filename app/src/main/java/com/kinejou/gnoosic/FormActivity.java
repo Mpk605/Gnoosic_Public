@@ -24,16 +24,14 @@ public class FormActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                Toast.makeText(FormActivity.this, s, Toast.LENGTH_SHORT).show();
+                Log.d("afterTextChanged", "text changed to " + s);
             }
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                //get list
             }
         });
 

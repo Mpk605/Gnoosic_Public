@@ -31,44 +31,48 @@
         android:layout_marginTop="30dp" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fav_band_1"
+        android:id="@+id/fav_band_1_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/text_fav_band1"
         android:layout_marginTop="10dp">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fav_band_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginEnd="40dp"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:imeOptions="actionDone" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/text_fav_band2"
+        android:id="@+id/text_fav_band2_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/one_of_my_fav_band"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fav_band_1"
+        app:layout_constraintTop_toBottomOf="@id/fav_band_1_layout"
         android:layout_marginTop="30dp" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fav_band_2"
+        android:id="@+id/fav_band_2_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/text_fav_band2"
+        app:layout_constraintTop_toBottomOf="@id/text_fav_band2_layout"
         android:layout_marginTop="10dp">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fav_band_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginEnd="40dp"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:imeOptions="actionDone" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -79,22 +83,24 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fav_band_2"
+        app:layout_constraintTop_toBottomOf="@id/fav_band_2_layout"
         android:layout_marginTop="30dp" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fav_band_3"
+        android:id="@+id/fav_band_3_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/text_fav_band3"
         android:layout_marginTop="10dp">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fav_band_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginEnd="40dp"
-            android:maxLines="1"/>
+            android:maxLines="1"
+            android:imeOptions="actionDone" />
     </com.google.android.material.textfield.TextInputLayout>
 
 

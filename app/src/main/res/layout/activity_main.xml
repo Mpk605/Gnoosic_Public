@@ -44,7 +44,8 @@
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
             android:text="@string/start"
-            app:strokeColor="#777" />
+            app:strokeColor="#777"
+            android:textColor="#777"/>
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
@@ -57,5 +58,7 @@
         android:layout_marginBottom="8dp"
         android:text="@string/history"
         app:icon="@drawable/ic_reply_24px"
-        app:strokeColor="#777" />
+        app:strokeColor="#777"
+        android:textColor="#777"
+        app:iconTint="#777"/>
 </RelativeLayout>
