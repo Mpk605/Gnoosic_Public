@@ -1,10 +1,10 @@
 package com.kinejou.gnoosic;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +25,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //History of liked artistes
+
+                try {
+                    GnoosicHelper gnoosicHelper = GnoosicHelper.getInstance();
+                    gnoosicHelper.execute("Nicki Minaj", "The Beatles", "Led Zeppelin");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
