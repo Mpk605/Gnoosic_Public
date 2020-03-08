@@ -1,48 +1,43 @@
 package com.kinejou.gnoosic;
 
-import android.os.AsyncTask;
+import android.util.Log;
 
-import java.io.IOException;
-import java.util.Objects;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Arrays;
+import java.util.concurrent.ExecutionException;
 
 import okhttp3.FormBody;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
-import okhttp3.Response;
 
-public class GnoosicHelper extends AsyncTask<String, Void, Void> {
-    private final MediaType JSON
-            = MediaType.get("application/json; charset=utf-8");
+class GnoosicHelper {
     private static GnoosicHelper gnoosicInstance;
     private String cookie;
-    private OkHttpClient client = new OkHttpClient();
-    private String base_host = "http://www.gnoosic.com/faves.php";
-    private String artist_host = "http://www.gnoosic.com/artist/";
+    private final String base_host = "http://www.gnoosic.com/faves.php";
+    private final String artist_host = "http://www.gnoosic.com/artist/";
 
     private GnoosicHelper() {
-
+        gnoosicInstance = this;
     }
 
-    @Override
-    protected Void doInBackground(String... strings) {
-        try {
-            getNewBandFrom3Bands(strings);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public static GnoosicHelper getInstance() {
+    static GnoosicHelper getInstance() {
         if (gnoosicInstance != null)
             return gnoosicInstance;
 
         return new GnoosicHelper();
     }
 
-    public void getNewBandFrom3Bands(String... bands) throws IOException {
+    String[] getTypeAheadSuggestion(String query) throws ExecutionException, InterruptedException {
+        Request request = new Request.Builder().url("http://cdn.gnoosic.com/typeahead?query=" + query)
+                .header("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36")
+                .header("Accept", "*/*")
+                .build();
+
+        return new HTTPRequestHandler().execute(request).get()[0].split("\n");
+    }
+
+    void getNewBandFrom3Bands(@NotNull String... bands) throws ExecutionException, InterruptedException {
         RequestBody body = new FormBody.Builder()
                 .add("skip", "1")
                 .add("Fave01", bands[0])
@@ -58,10 +53,9 @@ public class GnoosicHelper extends AsyncTask<String, Void, Void> {
                 .post(body)
                 .build();
 
-        System.out.println(request.headers().toString());
+        String[] response = new HTTPRequestHandler().execute(request).get();
 
-        try (Response response = client.newCall(request).execute()) {
-            System.out.println(Objects.requireNonNull(response.headers()).toString());
-        }
+        Log.d("Response", response[0]);
+        Log.d("Response", response[1]);
     }
 }

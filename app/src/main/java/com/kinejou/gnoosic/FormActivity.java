@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -12,7 +13,10 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.concurrent.ExecutionException;
+
 public class FormActivity extends AppCompatActivity {
+    GnoosicHelper gnoosicHelper;
 
     private TextWatcher watcher = new TextWatcher() {
         @Override
@@ -22,7 +26,18 @@ public class FormActivity extends AppCompatActivity {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
+            final String input = s.toString();
 
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        gnoosicHelper.getTypeAheadSuggestion(input);
+                    } catch (ExecutionException | InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
         }
 
         @Override
@@ -36,6 +51,8 @@ public class FormActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
 
+        gnoosicHelper = GnoosicHelper.getInstance();
+
         final TextInputEditText fav1 = findViewById(R.id.fav_band_1);
         fav1.addTextChangedListener(watcher);
 
@@ -44,7 +61,6 @@ public class FormActivity extends AppCompatActivity {
 
         final TextInputEditText fav3 = findViewById(R.id.fav_band_3);
         fav1.addTextChangedListener(watcher);
-
 
         findViewById(R.id.continue_button).setOnClickListener(new View.OnClickListener() {
             @Override
