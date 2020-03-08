@@ -2,6 +2,7 @@ package com.kinejou.gnoosic;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ClipData;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -23,6 +24,13 @@ public class HistoryActivity extends AppCompatActivity {
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems);
         lv.setAdapter(adapter);
 
-        listItems.add("oui");
+        for (int i = 0; i < 100; i ++) {
+            addElement(i+"");
+        }
+    }
+
+    public void addElement(String name) {
+        ClipData.Item item = new ClipData.Item(name);
+        //listItems.addItem(item);
     }
 }

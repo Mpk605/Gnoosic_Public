@@ -21,8 +21,11 @@
         android:id="@+id/lv_history"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@+id/saved_artist"
-        android:divider="#000"
+        app:layout_constraintTop_toBottomOf="@+id/saved_artist"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:divider="#888"
         android:dividerHeight="1dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
