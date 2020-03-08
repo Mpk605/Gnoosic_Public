@@ -14,6 +14,7 @@ import okhttp3.RequestBody;
 class GnoosicHelper {
     private static GnoosicHelper gnoosicInstance;
     private String cookie;
+    private final String gnoosic_home = "http://www.gnoosic.com";
     private final String base_host = "http://www.gnoosic.com/faves.php";
     private final String artist_host = "http://www.gnoosic.com/artist/";
 
@@ -49,7 +50,6 @@ class GnoosicHelper {
                 .header("accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9")
                 .header("Accept-Language", "en-US,en;q=0.9,fr-FR;q=0.8,fr;q=0.7")
                 .header("Content-Type", "application/x-www-form-urlencoded")
-                .header("Cookie", "_ga=GA1.2.157438752.1583397522; _gid=GA1.2.169487856.1583492640")
                 .post(body)
                 .build();
 
