@@ -9,6 +9,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,10 +32,7 @@ public class FormActivity extends AppCompatActivity implements AsyncResponse {
     GnoosicHelper gnoosicHelper;
 
     // Text inputs
-    TextInputEditText fav1, fav2, fav3;
-
-    // Text inputs containers
-    LinearLayout fav1Container, fav2Container, fav3Container;
+    AutoCompleteTextView fav1, fav2, fav3;
 
     // Asynchronous
     GetNewBandFrom3Bands getNewBandFrom3Bands = new GetNewBandFrom3Bands();
@@ -45,68 +44,28 @@ public class FormActivity extends AppCompatActivity implements AsyncResponse {
 
         gnoosicHelper = GnoosicHelper.getInstance();
 
-        fav1 = findViewById(R.id.fav_band_1);
-        fav1Container = findViewById(R.id.band1_container);
+        fav1 = findViewById(R.id.fav1);
         fav1.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                final String input = s.toString();
-
+            public void onTextChanged(final CharSequence charSequence, int i, int i1, int i2) {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
                         try {
-                            final String[] typeAheadResult = gnoosicHelper.getTypeAheadSuggestion(input);
+                            final String[] suggestions = gnoosicHelper.getTypeAheadSuggestion(String.valueOf(charSequence));
 
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    fav1Container.removeViews(1, fav1Container.getChildCount() - 1);
-
-                                    Log.d("View", fav1Container.getChildCount() + "");
-
-                                    if (typeAheadResult.length > 0) {
-                                        MaterialCardView suggestionsCardView = BuildUI.buildMaterialCardView(fav1Container.getContext(),
-                                                LinearLayout.LayoutParams.MATCH_PARENT,
-                                                LinearLayout.LayoutParams.WRAP_CONTENT,
-                                                0,
-                                                new int[]{0, 0, 0, 0});
-
-                                        fav1Container.addView(suggestionsCardView);
-
-                                        LinearLayout suggestionsContainer = BuildUI.buildLinearLayout(fav1Container.getContext(),
-                                                LinearLayout.LayoutParams.MATCH_PARENT,
-                                                LinearLayout.LayoutParams.WRAP_CONTENT,
-                                                LinearLayout.VERTICAL);
-
-                                        suggestionsCardView.addView(suggestionsContainer);
-
-                                        for (String suggestion : typeAheadResult) {
-                                            final TextView textView = BuildUI.buildTextView(fav1Container.getContext(),
-                                                    LinearLayout.LayoutParams.MATCH_PARENT,
-                                                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                                                    suggestion,
-                                                    15,
-                                                    new int[]{16, 4, 16, 4},
-                                                    Color.BLACK);
-
-                                            textView.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View view) {
-                                                    fav1.setText(textView.getText());
-                                                }
-                                            });
-                                            suggestionsContainer.addView(textView);
-
-                                            suggestionsContainer.addView(BuildUI.buildDivider(fav1Container.getContext(),
-                                                    new int[]{0, 0, 0, 0}));
-                                        }
-                                    }
+                                    ArrayAdapter<String> adapter = new ArrayAdapter<>(FormActivity.this,
+                                            android.R.layout.simple_dropdown_item_1line, suggestions);
+                                    fav1.setAdapter(adapter);
+                                    fav1.showDropDown();
                                 }
                             });
                         } catch (ExecutionException | InterruptedException e) {
@@ -117,71 +76,33 @@ public class FormActivity extends AppCompatActivity implements AsyncResponse {
             }
 
             @Override
-            public void afterTextChanged(Editable s) {
-                Log.d("afterTextChanged", "text changed to " + s);
+            public void afterTextChanged(Editable editable) {
+
             }
         });
 
-        fav2 = findViewById(R.id.fav_band_2);
-        fav2Container = findViewById(R.id.band2_container);
+        fav2 = findViewById(R.id.fav2);
         fav2.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                final String input = s.toString();
-
+            public void onTextChanged(final CharSequence charSequence, int i, int i1, int i2) {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
                         try {
-                            final String[] typeAheadResult = gnoosicHelper.getTypeAheadSuggestion(input);
+                            final String[] suggestions = gnoosicHelper.getTypeAheadSuggestion(String.valueOf(charSequence));
 
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    fav2Container.removeViews(1, fav2Container.getChildCount() - 1);
-
-                                    if (typeAheadResult.length > 0) {
-                                        MaterialCardView suggestionsCardView = BuildUI.buildMaterialCardView(fav2Container.getContext(),
-                                                LinearLayout.LayoutParams.MATCH_PARENT,
-                                                LinearLayout.LayoutParams.WRAP_CONTENT,
-                                                0,
-                                                new int[]{0, 0, 0, 0});
-
-                                        fav2Container.addView(suggestionsCardView);
-
-                                        LinearLayout suggestionsContainer = BuildUI.buildLinearLayout(fav2Container.getContext(),
-                                                LinearLayout.LayoutParams.MATCH_PARENT,
-                                                LinearLayout.LayoutParams.WRAP_CONTENT,
-                                                LinearLayout.VERTICAL);
-
-                                        suggestionsCardView.addView(suggestionsContainer);
-
-                                        for (String suggestion : typeAheadResult) {
-                                            final TextView textView = BuildUI.buildTextView(fav2Container.getContext(),
-                                                    LinearLayout.LayoutParams.MATCH_PARENT,
-                                                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                                                    suggestion,
-                                                    15,
-                                                    new int[]{16, 4, 16, 4},
-                                                    Color.BLACK);
-
-                                            textView.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View view) {
-                                                    fav2.setText(textView.getText());
-                                                }
-                                            });
-                                            suggestionsContainer.addView(textView);
-
-                                            suggestionsContainer.addView(BuildUI.buildDivider(fav2Container.getContext(),
-                                                    new int[]{0, 0, 0, 0}));
-                                        }
-                                    }
+                                    ArrayAdapter<String> adapter = new ArrayAdapter<>(FormActivity.this,
+                                            android.R.layout.simple_dropdown_item_1line, suggestions);
+                                    fav2.setAdapter(adapter);
+                                    fav2.showDropDown();
                                 }
                             });
                         } catch (ExecutionException | InterruptedException e) {
@@ -192,71 +113,33 @@ public class FormActivity extends AppCompatActivity implements AsyncResponse {
             }
 
             @Override
-            public void afterTextChanged(Editable s) {
-                Log.d("afterTextChanged", "text changed to " + s);
+            public void afterTextChanged(Editable editable) {
+
             }
         });
 
-        fav3 = findViewById(R.id.fav_band_3);
-        fav3Container = findViewById(R.id.band3_container);
+        fav3 = findViewById(R.id.fav3);
         fav3.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                final String input = s.toString();
-
+            public void onTextChanged(final CharSequence charSequence, int i, int i1, int i2) {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
                         try {
-                            final String[] typeAheadResult = gnoosicHelper.getTypeAheadSuggestion(input);
+                            final String[] suggestions = gnoosicHelper.getTypeAheadSuggestion(String.valueOf(charSequence));
 
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    fav3Container.removeViews(1, fav3Container.getChildCount() - 1);
-
-                                    if (typeAheadResult.length > 0) {
-                                        MaterialCardView suggestionsCardView = BuildUI.buildMaterialCardView(fav3Container.getContext(),
-                                                LinearLayout.LayoutParams.MATCH_PARENT,
-                                                LinearLayout.LayoutParams.WRAP_CONTENT,
-                                                0,
-                                                new int[]{0, 0, 0, 0});
-
-                                        fav3Container.addView(suggestionsCardView);
-
-                                        LinearLayout suggestionsContainer = BuildUI.buildLinearLayout(fav3Container.getContext(),
-                                                LinearLayout.LayoutParams.MATCH_PARENT,
-                                                LinearLayout.LayoutParams.WRAP_CONTENT,
-                                                LinearLayout.VERTICAL);
-
-                                        suggestionsCardView.addView(suggestionsContainer);
-
-                                        for (String suggestion : typeAheadResult) {
-                                            final TextView textView = BuildUI.buildTextView(fav3Container.getContext(),
-                                                    LinearLayout.LayoutParams.MATCH_PARENT,
-                                                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                                                    suggestion,
-                                                    15,
-                                                    new int[]{16, 4, 16, 4},
-                                                    Color.BLACK);
-
-                                            textView.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View view) {
-                                                    fav3.setText(textView.getText());
-                                                }
-                                            });
-                                            suggestionsContainer.addView(textView);
-
-                                            suggestionsContainer.addView(BuildUI.buildDivider(fav3Container.getContext(),
-                                                    new int[]{0, 0, 0, 0}));
-                                        }
-                                    }
+                                    ArrayAdapter<String> adapter = new ArrayAdapter<>(FormActivity.this,
+                                            android.R.layout.simple_dropdown_item_1line, suggestions);
+                                    fav3.setAdapter(adapter);
+                                    fav3.showDropDown();
                                 }
                             });
                         } catch (ExecutionException | InterruptedException e) {
@@ -267,8 +150,8 @@ public class FormActivity extends AppCompatActivity implements AsyncResponse {
             }
 
             @Override
-            public void afterTextChanged(Editable s) {
-                Log.d("afterTextChanged", "text changed to " + s);
+            public void afterTextChanged(Editable editable) {
+
             }
         });
 
