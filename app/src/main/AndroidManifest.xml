@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".HistoryActivity"></activity>
-        <activity android:name=".ResultActivity" />
-        <activity android:name=".FormActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activities.HistoryActivity"></activity>
+        <activity android:name=".Activities.ResultActivity" />
+        <activity android:name=".Activities.FormActivity" />
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

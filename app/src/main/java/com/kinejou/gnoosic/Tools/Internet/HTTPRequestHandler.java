@@ -1,4 +1,4 @@
-package com.kinejou.gnoosic;
+package com.kinejou.gnoosic.Tools.Internet;
 
 import android.os.AsyncTask;
 
@@ -9,13 +9,13 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class HTTPRequestHandler extends AsyncTask<Request, Void, String[]> {
+public class HTTPRequestHandler extends AsyncTask<Request, Void, String> {
     private OkHttpClient client = new OkHttpClient();
 
     @Override
-    protected String[] doInBackground(Request... requests) {
+    protected String doInBackground(Request... requests) {
         try (Response response = client.newCall(requests[0]).execute()) {
-            return new String[]{Objects.requireNonNull(response.body()).string(), String.valueOf(response.headers())};
+            return Objects.requireNonNull(response.body()).string();
         } catch (IOException e) {
             e.printStackTrace();
         }

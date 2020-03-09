@@ -1,12 +1,10 @@
-package com.kinejou.gnoosic;
+package com.kinejou.gnoosic.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -17,14 +15,18 @@ import android.widget.Toast;
 
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
+import com.kinejou.gnoosic.R;
 import com.kinejou.gnoosic.Tools.BuildUI;
+import com.kinejou.gnoosic.Tools.Internet.AsyncResponse;
+import com.kinejou.gnoosic.Tools.Internet.CookieFetcher;
+import com.kinejou.gnoosic.Tools.Internet.GnoosicAPI.GetNewBandFrom3Bands;
+import com.kinejou.gnoosic.Tools.Internet.GnoosicAPI.GetNewBandFromPreviousBand;
+import com.kinejou.gnoosic.Tools.Internet.GnoosicAPI.GnoosicHelper;
 
-import org.w3c.dom.Text;
-
-import java.util.Objects;
+import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 
-public class FormActivity extends AppCompatActivity {
+public class FormActivity extends AppCompatActivity implements AsyncResponse {
     GnoosicHelper gnoosicHelper;
 
     // Text inputs
@@ -32,6 +34,9 @@ public class FormActivity extends AppCompatActivity {
 
     // Text inputs containers
     LinearLayout fav1Container, fav2Container, fav3Container;
+
+    // Asynchronous
+    GetNewBandFrom3Bands getNewBandFrom3Bands = new GetNewBandFrom3Bands();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -270,31 +275,28 @@ public class FormActivity extends AppCompatActivity {
         findViewById(R.id.continue_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(FormActivity.this, fav1.getText() + " - " + fav2.getText() + " - " + fav3.getText(), Toast.LENGTH_SHORT).show();
-
-                if (Objects.requireNonNull(fav1.getText()).toString().equals("")) {
-                    fav1.setError("Field required");
-                    return;
-                }
-
-                if (Objects.requireNonNull(fav2.getText()).toString().equals("")) {
-                    fav2.setError("Field required");
-                    return;
-                }
-
-                if (Objects.requireNonNull(fav3.getText()).toString().equals("")) {
-                    fav3.setError("Field required");
-                    return;
-                }
-
+//                Toast.makeText(FormActivity.this, fav1.getText() + " - " + fav2.getText() + " - " + fav3.getText(), Toast.LENGTH_SHORT).show();
                 try {
-                    gnoosicHelper.getNewBandFrom3Bands(fav1.getText().toString(), fav2.getText().toString(), fav3.getText().toString());
+                    GnoosicHelper gnoosicHelper = GnoosicHelper.getInstance();
+                    gnoosicHelper.setCookie(new CookieFetcher().execute().get());
+
+                    getNewBandFrom3Bands.delegate = FormActivity.this;
+                    getNewBandFrom3Bands.execute(String.valueOf(fav1.getText()), String.valueOf(fav2.getText()), String.valueOf(fav3.getText()));
                 } catch (ExecutionException | InterruptedException e) {
                     e.printStackTrace();
-                }
 
-//                startActivity(new Intent(FormActivity.this, ResultActivity.class));
+                    Toast.makeText(FormActivity.this, "An error occured, please try again later", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+    }
+
+    @Override
+    public void processFinish(String[] output) {
+        Intent resultIntent = new Intent(this, ResultActivity.class);
+        resultIntent.putExtra("band", output[0]);
+        resultIntent.putExtra("SuppID", output[1]);
+
+        startActivity(resultIntent);
     }
 }

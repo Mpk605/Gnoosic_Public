@@ -1,10 +1,12 @@
-package com.kinejou.gnoosic;
+package com.kinejou.gnoosic.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.kinejou.gnoosic.R;
 
 public class MainActivity extends AppCompatActivity {
 

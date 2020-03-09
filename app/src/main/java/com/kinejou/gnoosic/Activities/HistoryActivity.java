@@ -1,4 +1,4 @@
-package com.kinejou.gnoosic;
+package com.kinejou.gnoosic.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.ClipData;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.kinejou.gnoosic.R;
 
 import java.util.ArrayList;
 
