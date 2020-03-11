@@ -9,6 +9,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.LinearLayout;
@@ -37,6 +38,8 @@ public class FormActivity extends AppCompatActivity implements AsyncResponse {
     // Asynchronous
     GetNewBandFrom3Bands getNewBandFrom3Bands = new GetNewBandFrom3Bands();
 
+    private boolean dropdown = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,20 +59,25 @@ public class FormActivity extends AppCompatActivity implements AsyncResponse {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        try {
-                            final String[] suggestions = gnoosicHelper.getTypeAheadSuggestion(String.valueOf(charSequence));
+                        if (dropdown) {
+                            try {
+                                final String[] suggestions = gnoosicHelper.getTypeAheadSuggestion(String.valueOf(charSequence));
 
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    ArrayAdapter<String> adapter = new ArrayAdapter<>(FormActivity.this,
-                                            android.R.layout.simple_dropdown_item_1line, suggestions);
-                                    fav1.setAdapter(adapter);
-                                    fav1.showDropDown();
-                                }
-                            });
-                        } catch (ExecutionException | InterruptedException e) {
-                            e.printStackTrace();
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        ArrayAdapter<String> adapter = new ArrayAdapter<>(FormActivity.this,
+                                                android.R.layout.simple_dropdown_item_1line, suggestions);
+
+                                        fav1.setAdapter(adapter);
+                                        fav1.showDropDown();
+                                    }
+                                });
+                            } catch (ExecutionException | InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            dropdown = true;
                         }
                     }
                 }).start();
@@ -78,6 +86,14 @@ public class FormActivity extends AppCompatActivity implements AsyncResponse {
             @Override
             public void afterTextChanged(Editable editable) {
 
+            }
+        });
+        fav1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                dropdown = false;
+                Toast.makeText(FormActivity.this, fav1.getText(), Toast.LENGTH_SHORT).show();
+                fav1.dismissDropDown();
             }
         });
 
@@ -93,20 +109,24 @@ public class FormActivity extends AppCompatActivity implements AsyncResponse {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        try {
-                            final String[] suggestions = gnoosicHelper.getTypeAheadSuggestion(String.valueOf(charSequence));
+                        if (dropdown) {
+                            try {
+                                final String[] suggestions = gnoosicHelper.getTypeAheadSuggestion(String.valueOf(charSequence));
 
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    ArrayAdapter<String> adapter = new ArrayAdapter<>(FormActivity.this,
-                                            android.R.layout.simple_dropdown_item_1line, suggestions);
-                                    fav2.setAdapter(adapter);
-                                    fav2.showDropDown();
-                                }
-                            });
-                        } catch (ExecutionException | InterruptedException e) {
-                            e.printStackTrace();
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        ArrayAdapter<String> adapter = new ArrayAdapter<>(FormActivity.this,
+                                                android.R.layout.simple_dropdown_item_1line, suggestions);
+                                        fav2.setAdapter(adapter);
+                                        fav2.showDropDown();
+                                    }
+                                });
+                            } catch (ExecutionException | InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            dropdown = true;
                         }
                     }
                 }).start();
@@ -115,6 +135,14 @@ public class FormActivity extends AppCompatActivity implements AsyncResponse {
             @Override
             public void afterTextChanged(Editable editable) {
 
+            }
+        });
+        fav2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                dropdown = false;
+                Toast.makeText(FormActivity.this, fav2.getText(), Toast.LENGTH_SHORT).show();
+                fav2.dismissDropDown();
             }
         });
 
@@ -130,20 +158,24 @@ public class FormActivity extends AppCompatActivity implements AsyncResponse {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        try {
-                            final String[] suggestions = gnoosicHelper.getTypeAheadSuggestion(String.valueOf(charSequence));
+                        if (dropdown) {
+                            try {
+                                final String[] suggestions = gnoosicHelper.getTypeAheadSuggestion(String.valueOf(charSequence));
 
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    ArrayAdapter<String> adapter = new ArrayAdapter<>(FormActivity.this,
-                                            android.R.layout.simple_dropdown_item_1line, suggestions);
-                                    fav3.setAdapter(adapter);
-                                    fav3.showDropDown();
-                                }
-                            });
-                        } catch (ExecutionException | InterruptedException e) {
-                            e.printStackTrace();
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        ArrayAdapter<String> adapter = new ArrayAdapter<>(FormActivity.this,
+                                                android.R.layout.simple_dropdown_item_1line, suggestions);
+                                        fav3.setAdapter(adapter);
+                                        fav3.showDropDown();
+                                    }
+                                });
+                            } catch (ExecutionException | InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            dropdown = true;
                         }
                     }
                 }).start();
@@ -152,6 +184,14 @@ public class FormActivity extends AppCompatActivity implements AsyncResponse {
             @Override
             public void afterTextChanged(Editable editable) {
 
+            }
+        });
+        fav3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                dropdown = false;
+                Toast.makeText(FormActivity.this, fav3.getText(), Toast.LENGTH_SHORT).show();
+                fav3.dismissDropDown();
             }
         });
 
