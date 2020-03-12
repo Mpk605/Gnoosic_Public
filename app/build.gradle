@@ -30,7 +30,10 @@ dependencies {
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'com.mashape.unirest:unirest-android:1.0.6'
     implementation 'com.squareup.okhttp3:okhttp:4.4.0'
-    implementation 'org.jsoup:jsoup:1.12.1'
+    implementation 'org.jsoup:jsoup:1.12.2'
     implementation "androidx.room:room-runtime:2.2.4"
     annotationProcessor "androidx.room:room-compiler:2.2.4"
+    implementation files('/Users/Jules/Downloads/YoutubeAndroidPlayerApi-1.2.2/libs/YoutubeAndroidPlayerApi.jar')
+
+    // Spotify SDK
 }

@@ -7,14 +7,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.android.material.button.MaterialButton;
+import com.google.android.youtube.player.YouTubeBaseActivity;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerView;
 import com.kinejou.gnoosic.Database.ArtistDatabase;
 import com.kinejou.gnoosic.Database.Entities.Artist;
 import com.kinejou.gnoosic.R;
 import com.kinejou.gnoosic.Tools.Internet.AsyncResponse;
 import com.kinejou.gnoosic.Tools.Internet.GnoosicAPI.GetNewBandFromPreviousBand;
 
-public class ResultActivity extends AppCompatActivity implements AsyncResponse {
+public class ResultActivity extends YouTubeBaseActivity implements AsyncResponse {
     String suppID;
     String artist;
 
@@ -62,6 +65,27 @@ public class ResultActivity extends AppCompatActivity implements AsyncResponse {
                 getNewBandFromPreviousBand.execute("Rate001", suppID);
             }
         });
+
+        final YouTubePlayerView youTubePlayerView = findViewById(R.id.youtube_player);
+        playVideo("XQKFNF0sAAY", youTubePlayerView);
+    }
+
+    public void playVideo(final String videoId, YouTubePlayerView youTubePlayerView) {
+        //initialize youtube player view
+        youTubePlayerView.initialize(getResources().getString(R.string.youtube_api_key),
+                new YouTubePlayer.OnInitializedListener() {
+                    @Override
+                    public void onInitializationSuccess(YouTubePlayer.Provider provider,
+                                                        YouTubePlayer youTubePlayer, boolean b) {
+                        youTubePlayer.cueVideo(videoId);
+                    }
+
+                    @Override
+                    public void onInitializationFailure(YouTubePlayer.Provider provider,
+                                                        YouTubeInitializationResult youTubeInitializationResult) {
+
+                    }
+                });
     }
 
     @Override
