@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
+import com.kinejou.gnoosic.Database.ArtistDatabase;
+import com.kinejou.gnoosic.Database.Entities.Artist;
 import com.kinejou.gnoosic.R;
 import com.kinejou.gnoosic.Tools.Internet.AsyncResponse;
 import com.kinejou.gnoosic.Tools.Internet.GnoosicAPI.GetNewBandFromPreviousBand;
@@ -36,6 +38,8 @@ public class ResultActivity extends AppCompatActivity implements AsyncResponse {
             @Override
             public void onClick(View view) {
                 getNewBandFromPreviousBand.delegate = ResultActivity.this;
+
+                ArtistDatabase.getInstance(view.getContext()).getArtistDao().insert(new Artist(artist));
 
                 getNewBandFromPreviousBand.execute("RateP01", suppID);
             }

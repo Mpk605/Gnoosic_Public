@@ -2,6 +2,7 @@ package com.kinejou.gnoosic.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -27,6 +29,7 @@ import com.kinejou.gnoosic.Tools.Internet.GnoosicAPI.GetNewBandFromPreviousBand;
 import com.kinejou.gnoosic.Tools.Internet.GnoosicAPI.GnoosicHelper;
 
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
 public class FormActivity extends AppCompatActivity implements AsyncResponse {
@@ -38,7 +41,55 @@ public class FormActivity extends AppCompatActivity implements AsyncResponse {
     // Asynchronous
     GetNewBandFrom3Bands getNewBandFrom3Bands = new GetNewBandFrom3Bands();
 
-    private boolean dropdown = true;
+    class BandTextWatcher implements TextWatcher {
+        private AutoCompleteTextView textView;
+
+        BandTextWatcher(AutoCompleteTextView textView) {
+            this.textView = textView;
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(final CharSequence charSequence, int i, int i1, int i2) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+
+                    try {
+                        final String[] suggestions = gnoosicHelper.getTypeAheadSuggestion(String.valueOf(charSequence));
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (textView.isFocused()) {
+                                    ArrayAdapter<String> adapter = new ArrayAdapter<>(FormActivity.this,
+                                            android.R.layout.simple_dropdown_item_1line, suggestions);
+
+                                    textView.setAdapter(adapter);
+                                    textView.showDropDown();
+                                } else {
+                                    textView.setAdapter(null);
+                                }
+                            }
+
+                        });
+                    } catch (ExecutionException | InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }).start();
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,157 +99,45 @@ public class FormActivity extends AppCompatActivity implements AsyncResponse {
         gnoosicHelper = GnoosicHelper.getInstance();
 
         fav1 = findViewById(R.id.fav1);
-        fav1.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(final CharSequence charSequence, int i, int i1, int i2) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (dropdown) {
-                            try {
-                                final String[] suggestions = gnoosicHelper.getTypeAheadSuggestion(String.valueOf(charSequence));
-
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        ArrayAdapter<String> adapter = new ArrayAdapter<>(FormActivity.this,
-                                                android.R.layout.simple_dropdown_item_1line, suggestions);
-
-                                        fav1.setAdapter(adapter);
-                                        fav1.showDropDown();
-                                    }
-                                });
-                            } catch (ExecutionException | InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            dropdown = true;
-                        }
-                    }
-                }).start();
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
+        fav1.addTextChangedListener(new BandTextWatcher(fav1));
         fav1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                dropdown = false;
                 Toast.makeText(FormActivity.this, fav1.getText(), Toast.LENGTH_SHORT).show();
                 fav1.dismissDropDown();
+                fav1.clearFocus();
+                fav2.requestFocus();
             }
         });
 
         fav2 = findViewById(R.id.fav2);
-        fav2.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(final CharSequence charSequence, int i, int i1, int i2) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (dropdown) {
-                            try {
-                                final String[] suggestions = gnoosicHelper.getTypeAheadSuggestion(String.valueOf(charSequence));
-
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        ArrayAdapter<String> adapter = new ArrayAdapter<>(FormActivity.this,
-                                                android.R.layout.simple_dropdown_item_1line, suggestions);
-                                        fav2.setAdapter(adapter);
-                                        fav2.showDropDown();
-                                    }
-                                });
-                            } catch (ExecutionException | InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            dropdown = true;
-                        }
-                    }
-                }).start();
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
+        fav2.addTextChangedListener(new BandTextWatcher(fav2));
         fav2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                dropdown = false;
                 Toast.makeText(FormActivity.this, fav2.getText(), Toast.LENGTH_SHORT).show();
                 fav2.dismissDropDown();
+                fav3.requestFocus();
             }
         });
 
         fav3 = findViewById(R.id.fav3);
-        fav3.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(final CharSequence charSequence, int i, int i1, int i2) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (dropdown) {
-                            try {
-                                final String[] suggestions = gnoosicHelper.getTypeAheadSuggestion(String.valueOf(charSequence));
-
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        ArrayAdapter<String> adapter = new ArrayAdapter<>(FormActivity.this,
-                                                android.R.layout.simple_dropdown_item_1line, suggestions);
-                                        fav3.setAdapter(adapter);
-                                        fav3.showDropDown();
-                                    }
-                                });
-                            } catch (ExecutionException | InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            dropdown = true;
-                        }
-                    }
-                }).start();
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
+        fav3.addTextChangedListener(new BandTextWatcher(fav3));
         fav3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                dropdown = false;
                 Toast.makeText(FormActivity.this, fav3.getText(), Toast.LENGTH_SHORT).show();
                 fav3.dismissDropDown();
+                fav3.clearFocus();
+                // Dismiss keyboard
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                Objects.requireNonNull(imm).hideSoftInputFromWindow(fav3.getWindowToken(), 0);
             }
         });
 
         findViewById(R.id.continue_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Toast.makeText(FormActivity.this, fav1.getText() + " - " + fav2.getText() + " - " + fav3.getText(), Toast.LENGTH_SHORT).show();
                 try {
                     GnoosicHelper gnoosicHelper = GnoosicHelper.getInstance();
                     gnoosicHelper.setCookie(new CookieFetcher().execute().get());

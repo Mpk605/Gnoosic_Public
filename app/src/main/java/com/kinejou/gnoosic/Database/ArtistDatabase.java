@@ -11,9 +11,9 @@ import com.kinejou.gnoosic.Database.Entities.Artist;
 @Database(entities = {Artist.class}, version = 1)
 public abstract class ArtistDatabase extends RoomDatabase {
     private static ArtistDatabase instance;
-    private static final String DB_NAME = "quotes_db";
+    private static final String DB_NAME = "artists_db";
 
-//    public abstract QuoteDao getQuoteDao();
+    public abstract ArtistDAO getArtistDao();
 
     public static synchronized ArtistDatabase getInstance(Context context) {
         if (instance == null) {
