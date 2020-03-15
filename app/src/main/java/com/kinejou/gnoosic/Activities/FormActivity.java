@@ -139,6 +139,8 @@ public class FormActivity extends AppCompatActivity implements AsyncResponse {
             @Override
             public void onClick(View v) {
                 try {
+                    findViewById(R.id.progress_bar).setVisibility(View.VISIBLE);
+
                     GnoosicHelper gnoosicHelper = GnoosicHelper.getInstance();
                     gnoosicHelper.setCookie(new CookieFetcher().execute().get());
 
@@ -146,6 +148,8 @@ public class FormActivity extends AppCompatActivity implements AsyncResponse {
                     getNewBandFrom3Bands.execute(String.valueOf(fav1.getText()), String.valueOf(fav2.getText()), String.valueOf(fav3.getText()));
                 } catch (ExecutionException | InterruptedException e) {
                     e.printStackTrace();
+
+                    findViewById(R.id.progress_bar).setVisibility(View.GONE);
 
                     Toast.makeText(FormActivity.this, "An error occured, please try again later", Toast.LENGTH_SHORT).show();
                 }
@@ -160,5 +164,10 @@ public class FormActivity extends AppCompatActivity implements AsyncResponse {
         resultIntent.putExtra("SuppID", output[1]);
 
         startActivity(resultIntent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, MainActivity.class));
     }
 }

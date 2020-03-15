@@ -1,7 +1,5 @@
 package com.kinejou.gnoosic.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -31,6 +29,7 @@ public class ResultActivity extends YouTubeBaseActivity implements AsyncResponse
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
+        findViewById(R.id.progress_bar).setVisibility(View.GONE);
 
         getNewBandFromPreviousBand = new GetNewBandFromPreviousBand();
 
@@ -43,6 +42,8 @@ public class ResultActivity extends YouTubeBaseActivity implements AsyncResponse
         findViewById(R.id.like_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                findViewById(R.id.progress_bar).setVisibility(View.VISIBLE);
+
                 getNewBandFromPreviousBand.delegate = ResultActivity.this;
 
                 ArtistDatabase.getInstance(view.getContext()).getArtistDao().insert(new Artist(artist));
@@ -54,6 +55,8 @@ public class ResultActivity extends YouTubeBaseActivity implements AsyncResponse
         findViewById(R.id.dislike_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                findViewById(R.id.progress_bar).setVisibility(View.VISIBLE);
+
                 getNewBandFromPreviousBand.delegate = ResultActivity.this;
 
                 getNewBandFromPreviousBand.execute("RateN01", suppID);
@@ -63,6 +66,8 @@ public class ResultActivity extends YouTubeBaseActivity implements AsyncResponse
         findViewById(R.id.idk_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                findViewById(R.id.progress_bar).setVisibility(View.VISIBLE);
+
                 getNewBandFromPreviousBand.delegate = ResultActivity.this;
 
                 getNewBandFromPreviousBand.execute("Rate001", suppID);
@@ -73,6 +78,7 @@ public class ResultActivity extends YouTubeBaseActivity implements AsyncResponse
         try {
             playVideo(new YoutubeAPI().execute(artist).get(), youTubePlayerView);
         } catch (ExecutionException | InterruptedException e) {
+            playVideo("G_cdKPMcjiQ", youTubePlayerView);
             e.printStackTrace();
         }
     }
@@ -100,12 +106,15 @@ public class ResultActivity extends YouTubeBaseActivity implements AsyncResponse
         Intent resultIntent = new Intent(this, ResultActivity.class);
         resultIntent.putExtra("band", output[0]);
         resultIntent.putExtra("SuppID", output[1]);
+        resultIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 
         startActivity(resultIntent);
     }
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(this, FormActivity.class));
+        Intent goToFormActivity = new Intent(this, FormActivity.class);
+        goToFormActivity.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(goToFormActivity);
     }
 }

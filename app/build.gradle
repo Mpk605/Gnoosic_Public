@@ -35,4 +35,5 @@ dependencies {
     implementation files('libs/YouTubeAndroidPlayerApi.jar')
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.9'
     implementation 'com.google.guava:guava:28.2-android'
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
 }
