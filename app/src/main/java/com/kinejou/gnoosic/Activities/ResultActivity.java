@@ -16,6 +16,9 @@ import com.kinejou.gnoosic.Database.Entities.Artist;
 import com.kinejou.gnoosic.R;
 import com.kinejou.gnoosic.Tools.Internet.AsyncResponse;
 import com.kinejou.gnoosic.Tools.Internet.GnoosicAPI.GetNewBandFromPreviousBand;
+import com.kinejou.gnoosic.Tools.Internet.YoutubeAPI;
+
+import java.util.concurrent.ExecutionException;
 
 public class ResultActivity extends YouTubeBaseActivity implements AsyncResponse {
     String suppID;
@@ -67,7 +70,11 @@ public class ResultActivity extends YouTubeBaseActivity implements AsyncResponse
         });
 
         final YouTubePlayerView youTubePlayerView = findViewById(R.id.youtube_player);
-        playVideo("XQKFNF0sAAY", youTubePlayerView);
+        try {
+            playVideo(new YoutubeAPI().execute(artist).get(), youTubePlayerView);
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void playVideo(final String videoId, YouTubePlayerView youTubePlayerView) {
