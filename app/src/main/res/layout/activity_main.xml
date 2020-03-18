@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".Activities.MainActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:menu="@menu/menu"
+            app:title="Gnoosic"
+            app:titleTextColor="#fff" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -44,6 +57,17 @@
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
             android:text="@string/continue_button_text"
+            android:textColor="#777"
+            app:strokeColor="#777" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/start_mood"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:text="Mood"
             android:textColor="#777"
             app:strokeColor="#777" />
     </LinearLayout>

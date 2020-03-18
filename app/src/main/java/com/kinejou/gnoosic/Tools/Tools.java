@@ -1,16 +1,21 @@
 package com.kinejou.gnoosic.Tools;
 
 import android.content.Context;
+import android.os.Environment;
 import android.util.TypedValue;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.Date;
 import java.util.Map;
+
+import static java.text.DateFormat.getDateInstance;
 
 public class Tools {
     public final static int MAX_VALUE = 364;
@@ -54,5 +59,18 @@ public class Tools {
         return resultString.length() > 0
                 ? resultString.substring(0, resultString.length() - 1)
                 : resultString;
+    }
+
+    public static File createImageFile(Context context) throws IOException {
+        // Create an image file name
+        String imageFileName = "mood";
+        File storageDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+
+        // Save a file: path for use with ACTION_VIEW intents
+        return File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
     }
 }

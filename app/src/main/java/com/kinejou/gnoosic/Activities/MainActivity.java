@@ -23,6 +23,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.start_mood).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, MoodActivity.class));
+            }
+        });
+
         findViewById(R.id.history).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

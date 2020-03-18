@@ -2,6 +2,8 @@ package com.kinejou.gnoosic.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -109,6 +111,18 @@ public class ResultActivity extends YouTubeBaseActivity implements AsyncResponse
         resultIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 
         startActivity(resultIntent);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.menu_settings:
+                startActivity(new Intent(this, MainActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override

@@ -14,7 +14,8 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="Bite"
+            app:menu="@menu/menu"
+            app:title="Gnoosic"
             app:titleTextColor="#fff" />
 
     </com.google.android.material.appbar.AppBarLayout>
