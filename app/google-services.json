@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "633995049307",
+    "firebase_url": "https://gnoosic.firebaseio.com",
+    "project_id": "gnoosic",
+    "storage_bucket": "gnoosic.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:633995049307:android:6b8d686263b8269d99427e",
+        "android_client_info": {
+          "package_name": "com.kinejou.gnoosic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "633995049307-dpu2uau13limil6bjihgp9f1futjmg2a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbP2alm2pFMzV3bwaP8VepOVE2W-VARAc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "633995049307-dpu2uau13limil6bjihgp9f1futjmg2a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
