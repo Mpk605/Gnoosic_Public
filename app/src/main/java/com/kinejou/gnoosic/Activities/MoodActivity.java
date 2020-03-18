@@ -91,7 +91,6 @@ public class MoodActivity extends AppCompatActivity {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inPreferredConfig = Bitmap.Config.ARGB_8888;
         Bitmap photoBitmap = BitmapFactory.decodeFile(photoFile.getAbsolutePath(), options);
-        ((ImageView) findViewById(R.id.photo)).setImageBitmap(photoBitmap);
 
         new ImageAnalyzer().getMoodPredictionBasedOnImage(this, photoBitmap);
     }

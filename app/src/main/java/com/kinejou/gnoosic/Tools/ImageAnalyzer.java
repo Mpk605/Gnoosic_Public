@@ -35,8 +35,11 @@ public class ImageAnalyzer {
                     .addOnSuccessListener(new OnSuccessListener<List<FirebaseVisionImageLabel>>() {
                         @Override
                         public void onSuccess(List<FirebaseVisionImageLabel> firebaseVisionImageLabels) {
+                            ArrayList<String> predictionList = new ArrayList<>();
+
                             for (FirebaseVisionImageLabel label : firebaseVisionImageLabels) {
                                 Log.d("ML", label.getText() + " : " + label.getConfidence());
+                                predictionList.add(label.getConfidence() + " : " + label.getText());
                             }
 
                             try {
@@ -53,6 +56,7 @@ public class ImageAnalyzer {
                                 Intent resultActivity = new Intent(context, ResultActivity.class);
                                 resultActivity.putExtra("SuppID", "17135");
                                 resultActivity.putExtra("band", result);
+                                resultActivity.putStringArrayListExtra("predictions", predictionList);
 
                                 Log.d("The", predictions.toString());
 

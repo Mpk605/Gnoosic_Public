@@ -18,6 +18,7 @@ import com.kinejou.gnoosic.Tools.Internet.AsyncResponse;
 import com.kinejou.gnoosic.Tools.Internet.GnoosicAPI.GetNewBandFromPreviousBand;
 import com.kinejou.gnoosic.Tools.Internet.YoutubeAPI;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 public class ResultActivity extends YouTubeBaseActivity implements AsyncResponse {
@@ -37,6 +38,18 @@ public class ResultActivity extends YouTubeBaseActivity implements AsyncResponse
 
         artist = getIntent().getStringExtra("band");
         suppID = getIntent().getStringExtra("SuppID");
+        ArrayList<String> predictions = getIntent().getStringArrayListExtra("predictions");
+
+        if (predictions != null) {
+            TextView predictionsTextView = findViewById(R.id.prediction_text_view);
+
+            String text = "Based on : \n ";
+
+            for (CharSequence sequence : predictions)
+                text += sequence + "\n";
+
+            predictionsTextView.setText(text);
+        }
 
         TextView artistTextView = findViewById(R.id.artist_text_view);
         artistTextView.setText(artist);
