@@ -2,13 +2,17 @@ package com.kinejou.gnoosic.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.preference.PreferenceManager;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatCallback;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.view.ActionMode;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -25,12 +29,13 @@ import com.kinejou.gnoosic.Tools.Theme;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-public class ResultActivity extends YouTubeBaseActivity implements AsyncResponse {
-    String suppID;
-    String artist;
+public class ResultActivity extends YouTubeBaseActivity implements AsyncResponse, AppCompatCallback {
+    private String suppID, artist;
 
     // Asynchronous
-    GetNewBandFromPreviousBand getNewBandFromPreviousBand;
+    private GetNewBandFromPreviousBand getNewBandFromPreviousBand;
+
+    private AppCompatDelegate appCompatDelegate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +45,11 @@ public class ResultActivity extends YouTubeBaseActivity implements AsyncResponse
         findViewById(R.id.progress_bar).setVisibility(View.GONE);
 
         final boolean keepArtist = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("keepArtists", true);
-        Log.d("debug", "keep artist? "+ keepArtist);
+        Log.d("debug", "keep artist? " + keepArtist);
+        appCompatDelegate = AppCompatDelegate.create(this, this);
+        appCompatDelegate.onCreate(savedInstanceState);
+        appCompatDelegate.setContentView(R.layout.activity_result);
+
         getNewBandFromPreviousBand = new GetNewBandFromPreviousBand();
 
         artist = getIntent().getStringExtra("band");
@@ -69,7 +78,7 @@ public class ResultActivity extends YouTubeBaseActivity implements AsyncResponse
                 getNewBandFromPreviousBand.delegate = ResultActivity.this;
 
                 if (keepArtist)
-                    ArtistDatabase.getInstance(view.getContext()).getArtistDao().insert(new Artist(artist));
+                    ArtistDatabase.getInstance(ResultActivity.this).getArtistDao().insert(new Artist(artist));
 
                 getNewBandFromPreviousBand.execute("RateP01", suppID);
             }
@@ -151,5 +160,21 @@ public class ResultActivity extends YouTubeBaseActivity implements AsyncResponse
         Intent goToFormActivity = new Intent(this, FormActivity.class);
         goToFormActivity.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(goToFormActivity);
+    }
+
+    @Override
+    public void onSupportActionModeStarted(ActionMode mode) {
+
+    }
+
+    @Override
+    public void onSupportActionModeFinished(ActionMode mode) {
+
+    }
+
+    @Nullable
+    @Override
+    public ActionMode onWindowStartingSupportActionMode(ActionMode.Callback callback) {
+        return null;
     }
 }

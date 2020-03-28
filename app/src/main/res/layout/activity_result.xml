@@ -7,24 +7,11 @@
     android:orientation="vertical"
     tools:context=".Activities.ResultActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:menu="@menu/menu"
-            app:title="Gnoosic"
-            app:titleTextColor="#fff" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
     <FrameLayout
         android:id="@+id/progress_bar"
         android:layout_width="match_parent"
         android:layout_height="4dp"
-        android:visibility="visible"
+        android:visibility="invisible"
         tools:ignore="UselessParent">
 
         <FrameLayout
@@ -56,7 +43,6 @@
                 android:id="@+id/youtube_player"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 

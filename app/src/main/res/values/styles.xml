@@ -1,7 +1,11 @@
 <resources>
 
+    <style name="AdaptStyle" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="AppTheme" parent="AdaptStyle">
         <item name="colorOnBackground">@color/lightColorBackground</item>
         <item name="colorPrimary">@color/lightColorPrimary</item>
         <item name="colorPrimaryDark">@color/lightColorPrimaryDark</item>
@@ -9,7 +13,7 @@
     </style>
 
     <!-- Dark theme. -->
-    <style name="DarkTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="DarkTheme" parent="AdaptStyle">
         <item name="colorOnBackground">@color/darkColorBackground</item>
         <item name="colorPrimary">@color/darkColorPrimary</item>
         <item name="colorPrimaryDark">@color/darkColorPrimaryDark</item>
@@ -17,7 +21,7 @@
     </style>
 
     <!-- Ultra Dark theme. -->
-    <style name="UltraDarkTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="UltraDarkTheme" parent="AdaptStyle">
         <item name="colorOnBackground">@color/ultraDarkColorBackground</item>
         <item name="colorPrimary">@color/ultraDarkColorPrimary</item>
         <item name="colorPrimaryDark">@color/ultraDarkColorPrimaryDark</item>

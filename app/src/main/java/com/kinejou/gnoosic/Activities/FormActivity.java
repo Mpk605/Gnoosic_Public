@@ -4,32 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.textfield.TextInputEditText;
 import com.kinejou.gnoosic.R;
-import com.kinejou.gnoosic.Tools.BuildUI;
 import com.kinejou.gnoosic.Tools.Internet.AsyncResponse;
 import com.kinejou.gnoosic.Tools.Internet.CookieFetcher;
 import com.kinejou.gnoosic.Tools.Internet.GnoosicAPI.GetNewBandFrom3Bands;
-import com.kinejou.gnoosic.Tools.Internet.GnoosicAPI.GetNewBandFromPreviousBand;
 import com.kinejou.gnoosic.Tools.Internet.GnoosicAPI.GnoosicHelper;
 import com.kinejou.gnoosic.Tools.Theme;
 
-import java.util.Arrays;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
