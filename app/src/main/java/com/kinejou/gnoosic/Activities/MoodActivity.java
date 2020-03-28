@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.kinejou.gnoosic.R;
 import com.kinejou.gnoosic.Tools.ImageAnalyzer;
+import com.kinejou.gnoosic.Tools.Theme;
 import com.kinejou.gnoosic.Tools.Tools;
 
 import java.io.File;
@@ -69,6 +70,7 @@ public class MoodActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(Theme.getTheme(this));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mood);
 

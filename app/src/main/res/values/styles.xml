@@ -2,10 +2,34 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorOnBackground">@color/lightColorBackground</item>
+        <item name="colorPrimary">@color/lightColorPrimary</item>
+        <item name="colorPrimaryDark">@color/lightColorPrimaryDark</item>
+        <item name="colorAccent">@color/lightColorAccent</item>
+    </style>
+
+    <!-- Dark theme. -->
+    <style name="DarkTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorOnBackground">@color/darkColorBackground</item>
+        <item name="colorPrimary">@color/darkColorPrimary</item>
+        <item name="colorPrimaryDark">@color/darkColorPrimaryDark</item>
+        <item name="colorAccent">@color/darkColorAccent</item>
+    </style>
+
+    <!-- Ultra Dark theme. -->
+    <style name="UltraDarkTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorOnBackground">@color/ultraDarkColorBackground</item>
+        <item name="colorPrimary">@color/ultraDarkColorPrimary</item>
+        <item name="colorPrimaryDark">@color/ultraDarkColorPrimaryDark</item>
+        <item name="colorAccent">@color/ultraDarkColorAccent</item>
+    </style>
+
+    <!-- Unicorn theme. -->
+    <style name="UnicornTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorOnBackground">@color/unicornColorBackground</item>
+        <item name="colorPrimary">@color/unicornColorPrimary</item>
+        <item name="colorPrimaryDark">@color/unicornColorPrimaryDark</item>
+        <item name="colorAccent">@color/unicornColorAccent</item>
     </style>
 
 </resources>

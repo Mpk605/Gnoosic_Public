@@ -9,6 +9,7 @@ import android.widget.ListView;
 
 import com.kinejou.gnoosic.Database.ArtistDatabase;
 import com.kinejou.gnoosic.R;
+import com.kinejou.gnoosic.Tools.Theme;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ public class HistoryActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(Theme.getTheme(this));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
@@ -28,14 +30,5 @@ public class HistoryActivity extends AppCompatActivity {
         listItems = ArtistDatabase.getInstance(this).getArtistDao().getSavedArtists();
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listItems);
         lv.setAdapter(adapter);
-
-        for (int i = 0; i < 100; i++) {
-            addElement(String.valueOf(i));
-        }
-    }
-
-    public void addElement(String name) {
-        ClipData.Item item = new ClipData.Item(name);
-        //listItems.addItem(item);
     }
 }

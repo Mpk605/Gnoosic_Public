@@ -1,0 +1,28 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/saved_artists">
+
+        <Preference
+            app:title="@string/clear_history"
+            app:key="clearHistory"
+            app:summary="@string/delete_all_artists"/>
+
+        <SwitchPreference
+            app:title="@string/keep_saved_artists"
+            app:key="keepArtists"
+            app:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/theme">
+
+        <ListPreference
+            app:title="Pick your favourite color"
+            app:key="listTheme"
+            app:defaultValue="4"
+            app:entries="@array/themeListString"
+            app:entryValues="@array/themeListValues" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -2,10 +2,13 @@ package com.kinejou.gnoosic.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.preference.PreferenceManager;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -17,6 +20,7 @@ import com.kinejou.gnoosic.R;
 import com.kinejou.gnoosic.Tools.Internet.AsyncResponse;
 import com.kinejou.gnoosic.Tools.Internet.GnoosicAPI.GetNewBandFromPreviousBand;
 import com.kinejou.gnoosic.Tools.Internet.YoutubeAPI;
+import com.kinejou.gnoosic.Tools.Theme;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -30,10 +34,13 @@ public class ResultActivity extends YouTubeBaseActivity implements AsyncResponse
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(Theme.getTheme(this));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
         findViewById(R.id.progress_bar).setVisibility(View.GONE);
 
+        final boolean keepArtist = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("keepArtists", true);
+        Log.d("debug", "keep artist? "+ keepArtist);
         getNewBandFromPreviousBand = new GetNewBandFromPreviousBand();
 
         artist = getIntent().getStringExtra("band");
@@ -61,7 +68,8 @@ public class ResultActivity extends YouTubeBaseActivity implements AsyncResponse
 
                 getNewBandFromPreviousBand.delegate = ResultActivity.this;
 
-                ArtistDatabase.getInstance(view.getContext()).getArtistDao().insert(new Artist(artist));
+                if (keepArtist)
+                    ArtistDatabase.getInstance(view.getContext()).getArtistDao().insert(new Artist(artist));
 
                 getNewBandFromPreviousBand.execute("RateP01", suppID);
             }

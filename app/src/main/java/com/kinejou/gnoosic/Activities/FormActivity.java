@@ -27,6 +27,7 @@ import com.kinejou.gnoosic.Tools.Internet.CookieFetcher;
 import com.kinejou.gnoosic.Tools.Internet.GnoosicAPI.GetNewBandFrom3Bands;
 import com.kinejou.gnoosic.Tools.Internet.GnoosicAPI.GetNewBandFromPreviousBand;
 import com.kinejou.gnoosic.Tools.Internet.GnoosicAPI.GnoosicHelper;
+import com.kinejou.gnoosic.Tools.Theme;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -93,6 +94,7 @@ public class FormActivity extends AppCompatActivity implements AsyncResponse {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(Theme.getTheme(this));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
 
