@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Gnoosic</string>
-    <string name="continue_button_text">Continuer</string>
+    <string name="classic_mode_button_text">Mode Classic</string>
     <string name="history">Historique</string>
     <string name="one_of_my_fav_band">Un de mes groupes favoris est…</string>
     <string name="saved_artists">Artistes Sauvegardés</string>
-    <string name="i_don_t_know">Peut-être</string>
-    <string name="i_don_t_like_it">Je n\'aime pas</string>
-    <string name="i_like_it">J\'aime</string>
-    <string name="teach_gnod">Pour apprendre à Gnod ce que vous aimez, entrer 3 groupes que vous connaissez et aimez déjà.</string>
+    <string name="teach_gnod">Pour apprendre à Gnoosic ce que vous aimez, entrer 3 groupes que vous connaissez et aimez déjà.</string>
     <string name="title_welcome">Bienvenue sur Gnoosic</string>
-    <string name="welcome">Gnod est système intelligent auto-évolutif qui en apprend plus sur le monde exterieur en demandant aux visiteurs ce qu\'ils aiment ou non. Sur Gnoosic Gnod se renseigne sur la musique. Gnod est une sorte de moteur de recherche pour la musique que vous ne connaissez pas. Il vous demandera quelle musique vous aimez et vous en conseillera d\'autre que vous pourriez aimer. Quand Gnod a été mis en ligne, sa base de données était complètement vide. Maintenant elle contient des centaines de milliers de groupes et une pléthore de connaissance sur les gouts de chacuns. Gnod apprend tous les jours. Profitez !</string>
+    <string name="welcome">Gnoosic est une entité intelligente qui propose de la musique à partir de vos gouts</string>
+    <string name="clear_history">Supprimer l\'historique ?</string>
+    <string name="delete_all_artists">Cela supprimera tous les artistes sauvegardés</string>
+    <string name="keep_saved_artists">Sauvegarder les artistes aimés ?</string>
+    <string name="title_activity_settings">Paramètres</string>
+    <string name="theme">Thème</string>
+    <string name="mood_mode_button_text">Mood Mode</string>
+    <string name="continue_button_text">Continue</string>
 </resources>

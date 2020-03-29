@@ -1,34 +1,33 @@
 <resources>
-    <string name="app_name">Gnoosic</string>
+    <string name="app_name" translatable="false">Gnoosic</string>
     <string name="title_welcome">Welcome to Gnoosic</string>
-    <string name="welcome">Gnod is a self-adapting system that learns about the outer world by asking its visitors what they like and what they don\'t like. In this instance of Gnod all is about music. Gnod is kind of a search engine for music you don\'t know about. It will ask you what music you like and then think about what you might like too. When I set Gnod online its database was completely empty. Now it contains hundreds of thousands of bands and quite some knowledge about who likes what. And Gnod learns more every day. Enjoy!</string>
+    <string name="welcome">Gnoosic is an intelligent entity that makes music suggestion based on what you like</string>
     <string name="history">history</string>
-    <string name="teach_gnod">To teach Gnod what you are like, please type in 3 bands that you already know and like.</string>
+    <string name="teach_gnod">To teach Gnoosic what you are like, please type in 3 bands that you already know and like.</string>
     <string name="one_of_my_fav_band">One of my favorite bands is...</string>
-    <string name="continue_button_text">continue</string>
+    <string name="classic_mode_button_text">Classic mode</string>
     <string name="saved_artists">Saved Artists</string>
     <string name="youtube_api_key" translatable="false">AIzaSyDg2njTmJWxXuSHDcnRXR_3A1_9s0LaBJY</string>
-    <string name="i_like_it">I like it</string>
-    <string name="i_don_t_like_it">I don\'t like it</string>
-    <string name="i_don_t_know">I don\'t know</string>
     <string name="title_activity_settings">Settings</string>
 
     <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
+    <string name="messages_header" translatable="false">Messages</string>
+    <string name="sync_header" translatable="false">Sync</string>
 
     <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
+    <string name="signature_title" translatable="false">Your signature</string>
+    <string name="reply_title" translatable="false">Default reply action</string>
 
     <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    <string name="sync_title" translatable="false">Sync email periodically</string>
+    <string name="attachment_title" translatable="false">Download incoming attachments</string>
+    <string name="attachment_summary_on" translatable="false">Automatically download attachments for incoming emails
     </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
-    <string name="keep_saved_artists">Conserver les artistes likés dans la mémoire?</string>
-    <string name="clear_history">clear history?</string>
-    <string name="delete_all_artists">This will delete all like artists</string>
+    <string name="attachment_summary_off" translatable="false">Only download attachments when manually requested</string>
+    <string name="keep_saved_artists">Save liked artists ?</string>
+    <string name="clear_history">Clear history ?</string>
+    <string name="delete_all_artists">This will delete all liked artists</string>
     <string name="theme">Theme</string>
+    <string name="mood_mode_button_text">Mood Mode</string>
+    <string name="continue_button_text">Continue</string>
 </resources>

@@ -3,9 +3,9 @@ package com.kinejou.gnoosic.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.start).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.start_classic).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //the 3 artists
@@ -42,20 +42,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, HistoryActivity.class));
             }
         });
+    }
 
-        findViewById(R.id.start_preferences).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //History of liked artistes
-                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-            }
-        });
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-            Log.d("menu", "settings");
+        startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+        Log.d("menu", "settings");
         return super.onOptionsItemSelected(item);
     }
 }

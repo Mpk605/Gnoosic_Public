@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Gnoosic</string>
-    <string name="continue_button_text">Continue</string>
+    <string name="classic_mode_button_text">Classic mode</string>
     <string name="history">History</string>
-    <string name="i_don_t_know">I don\'t know</string>
-    <string name="i_don_t_like_it">I don\'t like it</string>
-    <string name="i_like_it">I like it</string>
     <string name="one_of_my_fav_band">One of my favorite bands is…</string>
     <string name="saved_artists">Saved Artists</string>
-    <string name="teach_gnod">To teach Gnod what you are like, please type in 3 bands that you already know and like.</string>
+    <string name="teach_gnod">To teach Gnoosic what you are like, please type in 3 bands that you already know and like.</string>
     <string name="title_welcome">Welcome to Gnoosic</string>
-    <string name="welcome">Gnod is a self-adapting system that learns about the outer world by asking its visitors what they like and what they don\'t like. In this instance of Gnod all is about music. Gnod is kind of a search engine for music you don\'t know about. It will ask you what music you like and then think about what you might like too. When I set Gnod online its database was completely empty. Now it contains hundreds of thousands of bands and quite some knowledge about who likes what. And Gnod learns more every day. Enjoy!</string>
+    <string name="welcome">Gnoosic is an intelligent entity that makes music suggestion based on what you like</string>
+    <string name="clear_history">Clear history ?</string>
+    <string name="delete_all_artists">This will delete all liked artists</string>
+    <string name="keep_saved_artists">Save liked artists ?</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="theme">Theme</string>
+    <string name="mood_mode_button_text">Mood Mode</string>
+    <string name="continue_button_text">Continue</string>
 </resources>
