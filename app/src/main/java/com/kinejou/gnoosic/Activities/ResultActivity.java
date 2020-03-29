@@ -144,18 +144,6 @@ public class ResultActivity extends YouTubeBaseActivity implements AsyncResponse
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.menu_settings:
-                startActivity(new Intent(this, MainActivity.class));
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    @Override
     public void onBackPressed() {
         Intent goToFormActivity = new Intent(this, FormActivity.class);
         goToFormActivity.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
@@ -176,5 +164,18 @@ public class ResultActivity extends YouTubeBaseActivity implements AsyncResponse
     @Override
     public ActionMode onWindowStartingSupportActionMode(ActionMode.Callback callback) {
         return null;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        startActivity(new Intent(this, SettingsActivity.class));
+        Log.d("menu", "settings");
+        return super.onOptionsItemSelected(item);
     }
 }

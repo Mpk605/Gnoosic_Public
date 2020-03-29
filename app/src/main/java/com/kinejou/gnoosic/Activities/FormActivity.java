@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -157,6 +160,19 @@ public class FormActivity extends AppCompatActivity implements AsyncResponse {
         resultIntent.putExtra("SuppID", output[1]);
 
         startActivity(resultIntent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        startActivity(new Intent(this, SettingsActivity.class));
+        Log.d("menu", "settings");
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

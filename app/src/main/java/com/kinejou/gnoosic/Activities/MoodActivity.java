@@ -13,6 +13,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -74,16 +77,11 @@ public class MoodActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mood);
 
-        findViewById(R.id.take_photo_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (Build.VERSION.SDK_INT >= 23 && checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
-                    requestPermissions(new String[]{Manifest.permission.CAMERA}, MY_CAMERA_PERMISSION_CODE);
-                else {
-                    dispatchTakePictureIntent();
-                }
-            }
-        });
+        if (Build.VERSION.SDK_INT >= 23 && checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
+            requestPermissions(new String[]{Manifest.permission.CAMERA}, MY_CAMERA_PERMISSION_CODE);
+        else {
+            dispatchTakePictureIntent();
+        }
     }
 
     @Override
@@ -95,5 +93,18 @@ public class MoodActivity extends AppCompatActivity {
         Bitmap photoBitmap = BitmapFactory.decodeFile(photoFile.getAbsolutePath(), options);
 
         new ImageAnalyzer().getMoodPredictionBasedOnImage(this, photoBitmap);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        startActivity(new Intent(this, SettingsActivity.class));
+        Log.d("menu", "settings");
+        return super.onOptionsItemSelected(item);
     }
 }

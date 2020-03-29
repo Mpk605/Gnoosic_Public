@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.sql.Array;
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class YoutubeAPI extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... strings) {
         try {
-            String artist_host = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" + URLEncoder.encode(strings[0], StandardCharsets.UTF_8.toString())
+            String artist_host = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" + URLEncoder.encode(strings[0], StandardCharsets.UTF_8.name())
                     + "&topicId=%2Fm%2F04rlf&type=video&videoDimension=2d&videoEmbeddable=true&key=AIzaSyDg2njTmJWxXuSHDcnRXR_3A1_9s0LaBJY";
 
             Request request = new Request.Builder().url(artist_host)

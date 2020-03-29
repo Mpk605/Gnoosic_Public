@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+        startActivity(new Intent(this, SettingsActivity.class));
         Log.d("menu", "settings");
         return super.onOptionsItemSelected(item);
     }
