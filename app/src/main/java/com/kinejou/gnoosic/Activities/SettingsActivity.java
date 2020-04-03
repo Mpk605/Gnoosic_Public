@@ -1,10 +1,13 @@
 package com.kinejou.gnoosic.Activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,7 +34,7 @@ public class SettingsActivity extends AppCompatActivity {
         }
 
         //TODO RECUPE LA PREFERENCE "clearHistory" et listener dessus
-        dialogConfirm();
+        confirm();
     }
 
     public static class SettingsFragment extends PreferenceFragmentCompat {
@@ -41,22 +44,26 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
-    private void dialogConfirm() {
-        final Dialog confirmDeleteDialog = new Dialog(this);
-        confirmDeleteDialog.setContentView(R.layout.dialog_confirm);
-        Button deleteButton = findViewById(R.id.delete_history);
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    private void confirm() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.Warning);
+        builder.setMessage(R.string.confirm_delete);
+        builder.setCancelable(false);
 
-            }
-        });
-        Button cancelButton = findViewById(R.id.cancel_deleting);
-        cancelButton.setOnClickListener(new View.OnClickListener() {
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                confirmDeleteDialog.dismiss();
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getApplicationContext(), "You've choosen to delete all records", Toast.LENGTH_SHORT).show();
             }
         });
+
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getApplicationContext(), R.string.cancel, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        builder.show();
     }
 }

@@ -31,4 +31,9 @@
     <string name="clear_history">clear history?</string>
     <string name="delete_all_artists">This will delete all like artists</string>
     <string name="theme">Theme</string>
+    <string name="confirm_delete">Voulez-vous vraiment supprimer tout l\'historique?</string>
+    <string name="cancel">Annuler</string>
+    <string name="mood_mode_button_text">Mode Mood</string>
+    <string name="classic_mode_button_text">Mode Classique</string>
+    <string name="Warning">Attention !</string>
 </resources>
