@@ -1,26 +1,13 @@
 <resources>
-    <!-- Reply Preference -->
-    <string-array name="reply_entries">
-        <item>Reply</item>
-        <item>Reply to all</item>
+    <string-array name="mood_mode_list">
+        <item>Bold</item>
+        <item>Eclectic</item>
+        <item>Gorilla</item>
     </string-array>
 
-    <string-array name="reply_values">
-        <item>reply</item>
-        <item>reply_all</item>
-    </string-array>
-
-    <string-array name="themeListString">
-        <item>Light Theme</item>
-        <item>Dark Theme</item>
-        <item>Ultra Dark Theme</item>
-        <item>Unicorn Theme</item>
-    </string-array>
-
-    <string-array name="themeListValues">
-        <item>LightTheme</item>
-        <item>DarkTheme</item>
-        <item>UltraDark Theme</item>
-        <item>UnicornTheme</item>
+    <string-array name="mood_mode_values">
+        <item>bold</item>
+        <item>eclair</item>
+        <item>gorilla</item>
     </string-array>
 </resources>

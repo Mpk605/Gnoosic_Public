@@ -14,4 +14,5 @@
     <string name="theme">Theme</string>
     <string name="mood_mode_button_text">Mood Mode</string>
     <string name="continue_button_text">Continue</string>
+    <string name="mood_analysing">Veuillez patienter, il ne faut pas avoir peur...</string>
 </resources>

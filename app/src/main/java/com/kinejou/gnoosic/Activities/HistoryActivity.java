@@ -2,7 +2,6 @@ package com.kinejou.gnoosic.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,7 +15,6 @@ import android.widget.ListView;
 
 import com.kinejou.gnoosic.Database.ArtistDatabase;
 import com.kinejou.gnoosic.R;
-import com.kinejou.gnoosic.Tools.Theme;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +26,6 @@ public class HistoryActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(Theme.getTheme(this));
         super.onCreate(savedInstanceState);
         setOrientation();
 

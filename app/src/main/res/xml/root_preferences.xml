@@ -3,26 +3,24 @@
     <PreferenceCategory app:title="@string/saved_artists">
 
         <Preference
-            app:title="@string/clear_history"
             app:key="clearHistory"
-            app:summary="@string/delete_all_artists"/>
+            app:summary="@string/delete_all_artists"
+            app:title="@string/clear_history" />
 
         <SwitchPreference
-            app:title="@string/keep_saved_artists"
+            app:defaultValue="true"
             app:key="keepArtists"
-            app:defaultValue="true" />
+            app:title="@string/keep_saved_artists" />
 
     </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/theme">
-
         <ListPreference
-            app:title="Pick your favourite color"
-            app:key="listTheme"
-            app:defaultValue="4"
-            app:entries="@array/themeListString"
-            app:entryValues="@array/themeListValues" />
-
+            app:defaultValue="Eclectic"
+            app:entries="@array/mood_mode_list"
+            app:entryValues="@array/mood_mode_values"
+            app:key="mood_mode"
+            app:title="Pick your mood" />
     </PreferenceCategory>
 
 </PreferenceScreen>

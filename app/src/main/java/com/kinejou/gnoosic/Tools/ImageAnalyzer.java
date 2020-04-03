@@ -2,8 +2,11 @@ package com.kinejou.gnoosic.Tools;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.util.Log;
+
+import androidx.preference.PreferenceManager;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.ml.vision.FirebaseVision;
@@ -23,6 +26,8 @@ public class ImageAnalyzer {
 
     public void getMoodPredictionBasedOnImage(final Context context, Bitmap bitmap) {
         result = "Stupeflip";
+
+        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 
         try {
             FirebaseVisionImage image;
@@ -45,11 +50,37 @@ public class ImageAnalyzer {
                             try {
                                 ArrayList<String> predictions = new ArrayList<>();
 
-                                for (FirebaseVisionImageLabel label : firebaseVisionImageLabels)
-                                    for (String subLabel : label.getText().split(" "))
-                                        predictions.addAll(Arrays.asList(GnoosicHelper.getInstance().getTypeAheadSuggestion(subLabel)));
+                                switch (preferences.getString("mood_mode", "eclair")) {
+                                    case "eclair":
+                                        for (FirebaseVisionImageLabel label : firebaseVisionImageLabels)
+                                            for (String subLabel : label.getText().split(" "))
+                                                predictions.addAll(Arrays.asList(GnoosicHelper.getInstance().getTypeAheadSuggestion(subLabel)));
 
-                                result = predictions.get(ThreadLocalRandom.current().nextInt(predictions.size()));
+                                        result = predictions.get(ThreadLocalRandom.current().nextInt(predictions.size()));
+                                        break;
+                                    case "gorilla":
+                                        FirebaseVisionImageLabel maxLabel = firebaseVisionImageLabels.get(0);
+
+                                        for (FirebaseVisionImageLabel label : firebaseVisionImageLabels)
+                                            maxLabel = (label.getConfidence() <= maxLabel.getConfidence()) ? maxLabel : label;
+
+                                        for (String subLabel : maxLabel.getText().split(" "))
+                                            predictions.addAll(Arrays.asList(GnoosicHelper.getInstance().getTypeAheadSuggestion(subLabel)));
+
+                                        result = predictions.get(ThreadLocalRandom.current().nextInt(predictions.size()));
+                                        break;
+                                    case "bold":
+                                        FirebaseVisionImageLabel minLabel = firebaseVisionImageLabels.get(0);
+
+                                        for (FirebaseVisionImageLabel label : firebaseVisionImageLabels)
+                                            minLabel = (label.getConfidence() >= minLabel.getConfidence()) ? minLabel : label;
+
+                                        for (String subLabel : minLabel.getText().split(" "))
+                                            predictions.addAll(Arrays.asList(GnoosicHelper.getInstance().getTypeAheadSuggestion(subLabel)));
+
+                                        result = predictions.get(ThreadLocalRandom.current().nextInt(predictions.size()));
+                                        break;
+                                }
 
                                 result = (result.isEmpty()) ? "Stupeflip" : result;
 

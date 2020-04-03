@@ -36,4 +36,6 @@
     <string name="mood_mode_button_text">Mode Mood</string>
     <string name="classic_mode_button_text">Mode Classique</string>
     <string name="Warning">Attention !</string>
+    <string name="mood_analysing">Veuillez patienter, il ne faut pas avoir peur...</string>
+    <string name="settings">Settings</string>
 </resources>

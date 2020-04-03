@@ -24,7 +24,6 @@ import com.kinejou.gnoosic.R;
 import com.kinejou.gnoosic.Tools.Internet.AsyncResponse;
 import com.kinejou.gnoosic.Tools.Internet.GnoosicAPI.GetNewBandFromPreviousBand;
 import com.kinejou.gnoosic.Tools.Internet.YoutubeAPI;
-import com.kinejou.gnoosic.Tools.Theme;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -35,18 +34,15 @@ public class ResultActivity extends YouTubeBaseActivity implements AsyncResponse
     // Asynchronous
     private GetNewBandFromPreviousBand getNewBandFromPreviousBand;
 
-    private AppCompatDelegate appCompatDelegate;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(Theme.getTheme(this));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
         findViewById(R.id.progress_bar).setVisibility(View.GONE);
 
         final boolean keepArtist = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("keepArtists", true);
         Log.d("debug", "keep artist? " + keepArtist);
-        appCompatDelegate = AppCompatDelegate.create(this, this);
+        AppCompatDelegate appCompatDelegate = AppCompatDelegate.create(this, this);
         appCompatDelegate.onCreate(savedInstanceState);
         appCompatDelegate.setContentView(R.layout.activity_result);
 

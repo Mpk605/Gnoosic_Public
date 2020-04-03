@@ -6,24 +6,6 @@
     <color name="lightColorAccent">#C00000</color>
     <color name="lightColorBackground">#FFFFFF</color>
 
-    <!-- Dark theme -->
-    <color name="darkColorPrimary">#FFFFFF</color>
-    <color name="darkColorPrimaryDark">#CCCCCC</color>
-    <color name="darkColorAccent">#C00000</color>
-    <color name="darkColorBackground">#2B2B2B</color>
-
-    <!-- Ultra Dark theme -->
-    <color name="ultraDarkColorPrimary">#FFFFFF</color>
-    <color name="ultraDarkColorPrimaryDark">#FFFFFF</color>
-    <color name="ultraDarkColorAccent">#C00000</color>
-    <color name="ultraDarkColorBackground">#000000</color>
-
-    <!-- Unicorn theme -->
-    <color name="unicornColorPrimary">#501040</color>
-    <color name="unicornColorPrimaryDark">#301020</color>
-    <color name="unicornColorAccent">#EB15B5</color>
-    <color name="unicornColorBackground">#FFFFDE</color>
-
     <color name="black">#000</color>
     <color name="white">#FFF</color>
 </resources>

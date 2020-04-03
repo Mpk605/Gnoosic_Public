@@ -6,34 +6,8 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="AdaptStyle">
-        <item name="android:background">@color/lightColorBackground</item>
         <item name="android:textColor">@color/lightColorPrimary</item>
         <item name="colorPrimaryDark">@color/lightColorPrimaryDark</item>
         <item name="colorAccent">@color/lightColorAccent</item>
     </style>
-
-    <!-- Dark theme. -->
-    <style name="DarkTheme" parent="AdaptStyle">
-        <item name="android:background">@color/darkColorBackground</item>
-        <item name="android:textColor">@color/darkColorPrimary</item>
-        <item name="colorPrimaryDark">@color/darkColorPrimaryDark</item>
-        <item name="colorAccent">@color/darkColorAccent</item>
-    </style>
-
-    <!-- Ultra Dark theme. -->
-    <style name="UltraDarkTheme" parent="AdaptStyle">
-        <item name="android:background">@color/ultraDarkColorBackground</item>
-        <item name="android:textColor">@color/ultraDarkColorPrimary</item>
-        <item name="colorPrimaryDark">@color/ultraDarkColorPrimaryDark</item>
-        <item name="colorAccent">@color/ultraDarkColorAccent</item>
-    </style>
-
-    <!-- Unicorn theme. -->
-    <style name="UnicornTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
-        <item name="android:background">@color/unicornColorBackground</item>
-        <item name="android:textColor">@color/unicornColorPrimary</item>
-        <item name="colorPrimaryDark">@color/unicornColorPrimaryDark</item>
-        <item name="colorAccent">@color/unicornColorAccent</item>
-    </style>
-
 </resources>
