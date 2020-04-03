@@ -1,7 +1,9 @@
 package com.kinejou.gnoosic.Activities;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.ActionBar;
@@ -27,6 +29,9 @@ public class SettingsActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+
+        //TODO RECUPE LA PREFERENCE "clearHistory" et listener dessus
+        dialogConfirm();
     }
 
     public static class SettingsFragment extends PreferenceFragmentCompat {
@@ -34,5 +39,24 @@ public class SettingsActivity extends AppCompatActivity {
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
         }
+    }
+
+    private void dialogConfirm() {
+        final Dialog confirmDeleteDialog = new Dialog(this);
+        confirmDeleteDialog.setContentView(R.layout.dialog_confirm);
+        Button deleteButton = findViewById(R.id.delete_history);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        Button cancelButton = findViewById(R.id.cancel_deleting);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                confirmDeleteDialog.dismiss();
+            }
+        });
     }
 }
