@@ -6,8 +6,11 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Surface;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -27,7 +30,7 @@ public class HistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(Theme.getTheme(this));
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_history);
+        setOrientation();
 
         ListView lv = findViewById(R.id.lv_history);
 
@@ -47,5 +50,16 @@ public class HistoryActivity extends AppCompatActivity {
         startActivity(new Intent(this, SettingsActivity.class));
         Log.d("menu", "settings");
         return super.onOptionsItemSelected(item);
+    }
+
+    private void setOrientation() {
+        Display display = ((WindowManager) getSystemService(WINDOW_SERVICE)).getDefaultDisplay();
+        int orientation = display.getRotation();
+
+        if (orientation == Surface.ROTATION_90 || orientation == Surface.ROTATION_270) {
+            setContentView(R.layout.activity_history_horizontal);
+        } else {
+            setContentView(R.layout.activity_history);
+        }
     }
 }

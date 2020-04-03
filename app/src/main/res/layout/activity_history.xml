@@ -18,6 +18,16 @@
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/band_icon" />
+
     <ListView
         android:id="@+id/lv_history"
         android:layout_width="match_parent"
