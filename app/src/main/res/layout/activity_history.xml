@@ -48,6 +48,7 @@
         android:text="@string/clear_history"
         android:textColor="#777"
         app:strokeColor="#777"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="bottom|center_horizontal"
+        />
 
 </LinearLayout>

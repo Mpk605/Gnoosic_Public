@@ -64,11 +64,11 @@
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_margin="16dp"
                 android:text="@string/clear_history"
                 android:textColor="#777"
-                app:strokeColor="#777"
-                android:layout_gravity="center_horizontal"/>
+                app:strokeColor="#777" />
 
         </LinearLayout>
     </LinearLayout>
