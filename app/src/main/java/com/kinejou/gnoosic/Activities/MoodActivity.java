@@ -2,6 +2,7 @@ package com.kinejou.gnoosic.Activities;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,11 +13,13 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
+import androidx.preference.PreferenceManager;
 
 import com.kinejou.gnoosic.R;
 import com.kinejou.gnoosic.Tools.ImageAnalyzer;
@@ -84,6 +87,8 @@ public class MoodActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         setContentView(R.layout.activity_mood);
+
+        ((TextView) findViewById(R.id.mode_indicator)).setText("Mode : " + PreferenceManager.getDefaultSharedPreferences(this).getString("mood_mode", "Gorilla"));
 
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inPreferredConfig = Bitmap.Config.ARGB_8888;

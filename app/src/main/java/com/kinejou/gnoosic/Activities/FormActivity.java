@@ -43,19 +43,15 @@ public class FormActivity extends AppCompatActivity implements AsyncResponse {
         }
 
         @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
 
         @Override
         public void onTextChanged(final CharSequence charSequence, int i, int i1, int i2) {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-
                     try {
                         final String[] suggestions = gnoosicHelper.getTypeAheadSuggestion(String.valueOf(charSequence));
-
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -74,11 +70,9 @@ public class FormActivity extends AppCompatActivity implements AsyncResponse {
                     } catch (ExecutionException | InterruptedException e) {
                         e.printStackTrace();
                     }
-
                 }
             }).start();
         }
-
         @Override
         public void afterTextChanged(Editable editable) {
 

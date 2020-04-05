@@ -12,7 +12,6 @@
         android:layout_height="0dp"
         android:layout_weight="4"
         android:orientation="vertical">
-
         <TextView
             android:id="@+id/title_welcome"
             android:layout_width="match_parent"
@@ -23,7 +22,6 @@
             android:gravity="center"
             android:text="@string/title_welcome"
             android:textSize="25sp" />
-
         <TextView
             android:id="@+id/welcome"
             android:layout_width="match_parent"
@@ -34,12 +32,10 @@
             android:gravity="center"
             android:text="@string/welcome" />
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/start_mood"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"

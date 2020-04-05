@@ -14,5 +14,10 @@
     <string name="theme">Thème</string>
     <string name="mood_mode_button_text">Mood Mode</string>
     <string name="continue_button_text">Continue</string>
-    <string name="mood_analysing">Veuillez patienter, il ne faut pas avoir peur...</string>
+    <string name="mood_analysing">Veuillez patienter, il ne faut pas avoir peur…</string>
+    <string name="change_mood">Vous pouvez le changer dans les paramètres</string>
+    <string name="confirm_delete">Voulez-vous vraiment supprimer tout l\'historique?</string>
+    <string name="cancel">Annuler</string>
+    <string name="Warning">Attention !</string>
+    <string name="settings">Paramètres</string>
 </resources>
