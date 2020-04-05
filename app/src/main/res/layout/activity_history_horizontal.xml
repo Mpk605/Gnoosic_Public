@@ -70,6 +70,13 @@
                 android:textColor="#777"
                 app:strokeColor="#777" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Long click on a band to delete"
+                android:textColor="#AAA"
+                android:textAlignment="center"/>
+
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
