@@ -18,6 +18,7 @@
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/saved_artist"
                 android:layout_width="match_parent"
@@ -40,21 +41,34 @@
                 android:dividerHeight="1dp"
                 app:layout_constraintTop_toBottomOf="@+id/saved_artist" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:layout_weight="4">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="50dp"
                 android:layout_marginBottom="30dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/band_icon"
-                android:layout_gravity="center"/>
+                android:src="@drawable/band_icon" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/clear_history"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/clear_history"
+                android:textColor="#777"
+                app:strokeColor="#777"
+                android:layout_gravity="center_horizontal"/>
 
         </LinearLayout>
     </LinearLayout>

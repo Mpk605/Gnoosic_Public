@@ -16,4 +16,7 @@ public abstract class ArtistDAO {
 
     @Query("SELECT * FROM ARTISTS")
     public abstract List<String> getSavedArtists();
+
+    @Query("DELETE FROM ARTISTS")
+    public abstract  void clearAll();
 }

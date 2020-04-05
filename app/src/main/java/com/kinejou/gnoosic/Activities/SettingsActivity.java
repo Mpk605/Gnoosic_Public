@@ -26,9 +26,6 @@ public class SettingsActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-
-        //TODO RECUPE LA PREFERENCE "clearHistory" et listener dessus
-        confirm();
     }
 
     public static class SettingsFragment extends PreferenceFragmentCompat {
@@ -36,21 +33,5 @@ public class SettingsActivity extends AppCompatActivity {
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
         }
-    }
-
-    private void confirm() {
-        AlertDialog alertDialog = new MaterialAlertDialogBuilder(this).setTitle(R.string.Warning)
-                .setMessage(R.string.confirm_delete)
-                .setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getApplicationContext(), "You've choosen to delete all records", Toast.LENGTH_SHORT).show();
-                    }
-                }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getApplicationContext(), R.string.cancel, Toast.LENGTH_SHORT).show();
-                    }
-                }).show();
     }
 }
