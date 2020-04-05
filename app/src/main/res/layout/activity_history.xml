@@ -60,6 +60,6 @@
         android:layout_height="wrap_content"
         android:text="Long click on a band to delete"
         android:textColor="#AAA"
-        android:layout_gravity="center_horizontal"/>
+        android:textAlignment="center"/>
 
 </LinearLayout>
